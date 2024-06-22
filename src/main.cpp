@@ -1,18 +1,33 @@
 #include <Arduino.h>
+#include <LinkedList.h>
+#include "Tools/BPM/BPM.hpp"
+#include "Components/Potentiometer/Potentiometer.hpp"
+#include "Outputs/Led/Led.hpp"
 
-// put function declarations here:
-int myFunction(int, int);
+LinkedList<Outputs::Led*> leds;
+Tools::BPM bpm(60, 60, 2000);
+Components::Potentiometer pot(A0, 0, 667, 60, 2000);
+
+int iLed = 0;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+	Serial.begin(9600);
+	leds.add(new Outputs::Led(2));
+	leds.add(new Outputs::Led(3));
+	leds.add(new Outputs::Led(4));
+	leds.add(new Outputs::Led(5));
 }
+
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+	bpm.setBPM(pot.get());
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+	leds.get(iLed)->set(HIGH);
+	delay(bpm.getBPMToMil());
+	leds.get(iLed)->set(LOW);
+	
+	iLed++;
+	if (iLed > leds.size() - 1){
+		iLed = 0;
+	}
 }
