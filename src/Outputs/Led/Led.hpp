@@ -1,3 +1,4 @@
+#pragma once
 #include "../Interfaces/IOutput.hpp"
 
 namespace Outputs {

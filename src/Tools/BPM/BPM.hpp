@@ -1,3 +1,5 @@
+#pragma once
+
 namespace Tools {
     class BPM {
     public:

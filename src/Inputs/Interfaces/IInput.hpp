@@ -1,6 +1,7 @@
+#pragma once
 #include <Arduino.h>
 
-class IComponent {
+class IInput {
     public:
         virtual int get() = 0;
     private:
