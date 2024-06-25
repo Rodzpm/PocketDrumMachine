@@ -1,5 +1,4 @@
 #pragma once
-
 #include <Wire.h>
 
 const unsigned char bli7_logo [] PROGMEM = {

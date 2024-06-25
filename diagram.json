@@ -3,20 +3,24 @@
   "author": "Rodz",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-arduino-uno", "id": "uno", "top": -95.4, "left": 210.6, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
     {
       "type": "board-ssd1306",
       "id": "oled1",
-      "top": 137.54,
-      "left": 307.43,
+      "top": 243.14,
+      "left": 125.03,
       "attrs": { "i2cAddress": "0x3c" }
-    }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 104.3, "left": 287.8, "attrs": {} }
   ],
   "connections": [
-    [ "uno:3.3V", "oled1:VCC", "green", [ "v0" ] ],
-    [ "oled1:GND", "uno:GND.2", "black", [ "v-9.6", "h34.5" ] ],
-    [ "uno:A5", "oled1:SCL", "green", [ "v28.7", "h-101.6" ] ],
-    [ "uno:A4", "oled1:SDA", "green", [ "v38.3", "h-82.27" ] ]
+    [ "oled1:GND", "uno:GND.2", "black", [ "v0" ] ],
+    [ "oled1:VCC", "uno:3.3V", "red", [ "v-19.2", "h-22.65" ] ],
+    [ "oled1:SCL", "uno:A5", "green", [ "v-28.8", "h73.4" ] ],
+    [ "oled1:SDA", "uno:A4", "green", [ "v-19.2", "h54.07" ] ],
+    [ "pot1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "pot1:GND", "uno:GND.3", "black", [ "v0" ] ],
+    [ "pot1:SIG", "uno:A3", "green", [ "v0" ] ]
   ],
   "dependencies": {}
 }

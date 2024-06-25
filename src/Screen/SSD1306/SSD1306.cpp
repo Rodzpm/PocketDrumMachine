@@ -19,8 +19,12 @@ namespace Screen {
         this->display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
     }
 
-    void SSD1306::drawBitmap(int x, int y, const unsigned char* bitmap, int width, int height) {
-        this->display.drawBitmap(x, y, bitmap, width, height, WHITE);
+    void SSD1306::fillScreen(int color) {
+        this->display.fillScreen(color);
+    }
+
+    void SSD1306::drawBitmap(int x, int y, const unsigned char* bitmap, int color, int width, int height) {
+        this->display.drawBitmap(x, y, bitmap, width, height, color);
     }
 
     void SSD1306::drawText(int x, int y, int size, int color, const char* text) {

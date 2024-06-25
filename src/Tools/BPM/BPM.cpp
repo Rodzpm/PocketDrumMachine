@@ -19,6 +19,10 @@ namespace Tools {
         this->bpm = bpm;
     }
 
+    int BPM::getBPM() {
+        return this->bpm;
+    }
+
     int BPM::getBPMToMil() {
         return 60000 / this->bpm;
     }

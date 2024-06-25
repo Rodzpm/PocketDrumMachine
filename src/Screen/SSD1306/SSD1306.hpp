@@ -12,7 +12,8 @@ namespace Screen {
             void render() override;
             void clear() override;
             void init() override;
-            void drawBitmap(int x, int y, const unsigned char* bitmap, int width, int height) override;
+            void fillScreen(int color) override;
+            void drawBitmap(int x, int y, const unsigned char* bitmap, int color, int width, int height) override;
             void drawText(int x, int y, int size, int color, const char* text) override;
             void setScreenWidth(int width) override;
             void setScreenHeight(int height) override;
