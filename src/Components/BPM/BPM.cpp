@@ -1,13 +1,13 @@
 #include "BPM.hpp"
 
-namespace Tools {
-    BPM::BPM(int bpm, int min, int max) {
+namespace Components {
+    Components::BPM::BPM(int bpm, int min, int max) {
         this->setBPM(bpm);
         this->min = min;
         this->max = max;
     }
 
-    void BPM::setBPM(int bpm) {
+    void Components::BPM::setBPM(int bpm) {
         if (bpm < this->min) {
             this->bpm = this->min;
             return;
@@ -19,11 +19,11 @@ namespace Tools {
         this->bpm = bpm;
     }
 
-    int BPM::getBPM() {
+    int Components::BPM::getBPM() {
         return this->bpm;
     }
 
-    int BPM::getBPMToMil() {
+    int Components::BPM::getBPMToMil() {
         return 60000 / this->bpm;
     }
 }

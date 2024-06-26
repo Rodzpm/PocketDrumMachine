@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Tools {
+namespace Components {
     class BPM {
     public:
         BPM(int bpm = 60, int min = 60, int max = 2000);
