@@ -11,7 +11,7 @@ namespace Inputs {
 
     int Potentiometer::get() {
         this->pot_val = analogRead(this->pin);
-        this->pot_val = map(this->pot_val, this->pot_max, this->pot_min, this->min_val, this->max_val);
+        this->pot_val = map(this->pot_val, this->pot_min, this->pot_max, this->min_val, this->max_val);
         return this->pot_val;
     }
 }
