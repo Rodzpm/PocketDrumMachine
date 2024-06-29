@@ -3,6 +3,7 @@
 #include <LinkedList.h>
 #include "../BPM/BPM.hpp"
 #include "Pattern/Pattern.hpp"
+#include <Chrono.h>
 
 namespace Components {
     template <typename T>
@@ -20,9 +21,23 @@ namespace Components {
             }
         }
 
+        void update()
+        {
+            if (this->_chrono.hasPassed(this->_bpm.getBPMToMil() / 4)) {
+                this->_currentStep++;
+                if (this->_currentStep >= this->_size) {
+                    this->_currentStep = 0;
+                }
+                this->_chrono.restart();
+            }
+        }
+
         void display()
         {
-            this->_display.display(this->_sequence.get(this->_currentPattern)->getPattern());
+            T pattern = this->_sequence.get(this->_currentPattern)->getPattern();
+            pattern |= (1 << (this->_size - this->_currentStep));
+            
+            this->_display.display(pattern);
         }
 
         Display<T>& getDisplay()
@@ -35,6 +50,8 @@ namespace Components {
         BPM _bpm;
         LinkedList<Pattern<T>*> _sequence;
         int _currentPattern = 0;
+        int _currentStep = 0;
         Display<T> _display;
+        Chrono _chrono;
     };
 }

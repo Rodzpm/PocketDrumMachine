@@ -9,7 +9,7 @@ public:
     Pattern(int size, const char *name) :
         _size(size),
         _name(name),
-        _pattern(0b1111111111111111)
+        _pattern(0)
     {}
 
     // Constructeur de copie
