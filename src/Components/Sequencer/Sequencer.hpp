@@ -7,7 +7,7 @@ namespace Components {
         public:
             Sequencer(int size) :
                 size(size),
-                _display(Display<T>(size, 2, 3, 4))
+                _display(Display<T>(size, 8, 10, 9))
             {}
 
             void display()
