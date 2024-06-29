@@ -3,27 +3,27 @@
 namespace Components {
     Components::BPM::BPM(int bpm, int min, int max) {
         this->setBPM(bpm);
-        this->min = min;
-        this->max = max;
+        this->_min = min;
+        this->_max = max;
     }
 
     void Components::BPM::setBPM(int bpm) {
-        if (bpm < this->min) {
-            this->bpm = this->min;
+        if (bpm < this->_min) {
+            this->_bpm = this->_min;
             return;
         }
-        if (bpm > this->max) {
-            this->bpm = this->max;
+        if (bpm > this->_max) {
+            this->_bpm = this->_max;
             return;
         }
-        this->bpm = bpm;
+        this->_bpm = bpm;
     }
 
     int Components::BPM::getBPM() {
-        return this->bpm;
+        return this->_bpm;
     }
 
     int Components::BPM::getBPMToMil() {
-        return 60000 / this->bpm;
+        return 60000 / this->_bpm;
     }
 }

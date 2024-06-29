@@ -7,6 +7,6 @@ namespace Outputs {
             Led(uint8_t pin);
             void set(int value);
         private:
-            uint8_t pin;
+            uint8_t _pin;
     };
 }

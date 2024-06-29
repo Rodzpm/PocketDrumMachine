@@ -1,79 +1,45 @@
 #pragma once
-#include <LinkedList.h>
 #include <Arduino.h>
 
 
 template <typename T>
 class Display {
 public:
-    Display(int size, int dataPin, int clockPin, int latchPin) :
-        size(size),
-        dataPin(dataPin),
-        clockPin(clockPin),
-        latchPin(latchPin),
-        data(0)
+    Display(int size, int dataPin, int latchPin, int clockPin) :
+        _size(size),
+        _dataPin(dataPin),
+        _clockPin(clockPin),
+        _latchPin(latchPin)
     {}
 
-    void setDisplayData(T data)
+    void display(T data)
     {
-        Serial.println(data);
-        this->data = data;
-    }
-
-    T getDisplayData()
-    {
-        return this->data;
-    }
-
-    void setDisplayDataAt(int index, int data)
-    {
-        if (index >= this->size) {
-            return;
+        digitalWrite(this->_latchPin, LOW);
+        for (int i = 0; i < this->_size; i++) {
+            digitalWrite(this->_clockPin, LOW);
+            digitalWrite(this->_dataPin, (data & (1 << i)) ? HIGH : LOW);
+            digitalWrite(this->_clockPin, HIGH);
         }
-        if (data) {
-            this->data |= (1 << index);
-        } else {
-            this->data &= ~(1 << index);
-        }
-    }
-    int getDisplayDataAt(int index)
-    {
-        return (this->data & (1 << index)) ? 1 : 0;
-    }
-
-    void display()
-    {
-        digitalWrite(this->latchPin, LOW);
-        for (int i = 0; i < this->size; i++) {
-            digitalWrite(this->clockPin, LOW);
-            digitalWrite(this->dataPin, (this->data & (1 << i)) ? HIGH : LOW);
-            digitalWrite(this->clockPin, HIGH);
-        }
-        digitalWrite(this->latchPin, HIGH);
+        digitalWrite(this->_latchPin, HIGH);
     }
     void setup()
     {
-        pinMode(this->dataPin, OUTPUT);
-        pinMode(this->clockPin, OUTPUT);
-        pinMode(this->latchPin, OUTPUT);
-    }
-    void clear()
-    {
-        this->data = 0;
+        pinMode(this->_dataPin, OUTPUT);
+        pinMode(this->_clockPin, OUTPUT);
+        pinMode(this->_latchPin, OUTPUT);
     }
 
     void setSize(int size)
     {
-        this->size = size;
+        this->_size = size;
     }
     int getSize()
     {
-        return this->size;
+        return this->_size;
     }
 private:
-    int size;
-    int dataPin;
-    int clockPin;
-    int latchPin;
-    T data;
+    int _size;
+    int _dataPin;
+    int _clockPin;
+    int _latchPin;
 };

@@ -2,26 +2,26 @@
 
 namespace Inputs {
     Button::Button(uint8_t pin) {
-        this->pin = pin;
-        this->button_state = NONE;
-        pinMode(this->pin, INPUT);
+        this->_pin = pin;
+        this->_button_state = NONE;
+        pinMode(this->_pin, INPUT);
     }
 
     int Button::get() {
-        int button_val = digitalRead(this->pin);
+        int button_val = digitalRead(this->_pin);
         if (button_val == HIGH) {
-            if (this->button_state == PRESSED || this->button_state == HOLD) {
-                this->button_state = HOLD;
+            if (this->_button_state == PRESSED || this->_button_state == HOLD) {
+                this->_button_state = HOLD;
             } else {
-                this->button_state = PRESSED;
+                this->_button_state = PRESSED;
             }
         } else {
-            if (this->button_state == PRESSED || this->button_state == HOLD) {
-                this->button_state = RELEASED;
+            if (this->_button_state == PRESSED || this->_button_state == HOLD) {
+                this->_button_state = RELEASED;
             } else {
-                this->button_state = NONE;
+                this->_button_state = NONE;
             }
         }
-        return this->button_state;
+        return this->_button_state;
     }
 }

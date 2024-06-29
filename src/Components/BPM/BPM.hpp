@@ -8,8 +8,8 @@ namespace Components {
         int getBPM();
         int getBPMToMil();
     private:
-        int bpm;
-        int min = 60;
-        int max = 2000;
+        int _bpm;
+        int _min = 60;
+        int _max = 2000;
     };
 }

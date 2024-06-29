@@ -15,7 +15,7 @@ namespace Inputs {
             Button(uint8_t pin);
             int get();
         private:
-            uint8_t pin;
-            ButtonState button_state;
+            uint8_t _pin;
+            ButtonState _button_state;
     };
 }

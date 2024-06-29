@@ -5,5 +5,5 @@ class IInput {
     public:
         virtual int get() = 0;
     private:
-        uint8_t pin;
+        uint8_t _pin;
 };

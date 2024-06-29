@@ -2,11 +2,11 @@
 
 namespace Outputs {
     Led::Led(uint8_t pin) {
-        this->pin = pin;
-        pinMode(this->pin, OUTPUT);
+        this->_pin = pin;
+        pinMode(this->_pin, OUTPUT);
     }
 
     void Led::set(int value) {
-        digitalWrite(this->pin, value);
+        digitalWrite(this->_pin, value);
     }
 }
