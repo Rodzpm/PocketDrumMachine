@@ -45,6 +45,11 @@ namespace Components {
             return this->_display;
         }
 
+        void setBPM(int bpm)
+        {
+            this->_bpm.setBPM(bpm);
+        }
+
     private:
         int _size;
         BPM _bpm;
