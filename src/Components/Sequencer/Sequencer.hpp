@@ -1,5 +1,6 @@
 #pragma once
 #include "Display/Display.hpp"
+#include "Inputs/Inputs.hpp"
 #include <LinkedList.h>
 #include "../BPM/BPM.hpp"
 #include "Pattern/Pattern.hpp"
@@ -13,7 +14,8 @@ namespace Components {
             _size(size),
             _bpm(BPM(tempo)),
             _sequence(),
-            _display(Display<T>(size, 8, 9, 10))
+            _display(Display<T>(size, 8, 9, 10)),
+            _inputs(Inputs<T>(size, 2, 3, 4))
         {
             // Ajoute 16 patterns à la séquence
             for (int i = 0; i < 16; i++) {
@@ -30,6 +32,13 @@ namespace Components {
                 }
                 this->_chrono.restart();
             }
+            this->_currentInputs = this->_inputs.getInputs();
+
+            for (int i = 0; i < this->_size; i++) {
+                if (this->_currentInputs & (1 << i)) {
+                    this->_sequence.get(this->_currentPattern)->setPatternAt(i, 1);
+                }
+            }
         }
 
         void display()
@@ -45,6 +54,11 @@ namespace Components {
             return this->_display;
         }
 
+        Inputs<T>& getInputs()
+        {
+            return this->_inputs;
+        }
+
         void setBPM(int bpm)
         {
             this->_bpm.setBPM(bpm);
@@ -57,6 +71,8 @@ namespace Components {
         int _currentPattern = 0;
         int _currentStep = 0;
         Display<T> _display;
+        Inputs<T> _inputs;
+        T _currentInputs = 0;
         Chrono _chrono;
     };
 }

@@ -1,7 +1,7 @@
 #include "Potentiometer.hpp"
 
-namespace Inputs {
-    Potentiometer::Potentiometer(uint8_t pin, int pot_min = 0, int pot_max = 1023, int min_val = 0, int max_val = 0) {
+namespace InputsElt {
+    Potentiometer::Potentiometer(uint8_t pin, int pot_min, int pot_max, int min_val, int max_val) {
         this->_pin = pin;
         this->_pot_min = pot_min;
         this->_pot_max = pot_max;

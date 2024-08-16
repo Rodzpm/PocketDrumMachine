@@ -3,16 +3,17 @@
 #include "Inputs/Potentiometer/Potentiometer.hpp"
 
 Components::Sequencer<uint16_t> sequencer(16, 180);
-Inputs::Potentiometer potentiometer(0, 0, 1023, 60, 240);
+InputsElt::Potentiometer potentiometer(0, 0, 1023, 60, 240);
 
-
-void setup() {
-  	Serial.begin(9600);
-  	sequencer.getDisplay().setup();
+void setup()
+{
+	Serial1.begin(115200);
+	sequencer.getDisplay().setup();
+	sequencer.getInputs().setup();
 }
 
-void loop() {
-	//update potentiometer
+void loop()
+{
 	int pot_val = potentiometer.get();
 	sequencer.setBPM(pot_val);
 	sequencer.update();

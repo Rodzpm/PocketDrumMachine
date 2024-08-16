@@ -1,7 +1,7 @@
 #pragma once
 #include "../Interfaces/IInput.hpp"
 
-namespace Inputs {
+namespace InputsElt {
 
     enum ButtonState {
         PRESSED,
