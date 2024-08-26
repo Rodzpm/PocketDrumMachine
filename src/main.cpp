@@ -12,7 +12,7 @@ void setup()
 	Serial1.begin(115200);
 	display.init();
 	display.fillScreen(BLACK);
-	display.drawBitmap(0, 0, bli7_text, WHITE, 128, 64);
+	display.drawBitmap(0, 0, bli7_logo, WHITE, 128, 64);
 	display.render();
 	delay(1000);
 	display.clear();
