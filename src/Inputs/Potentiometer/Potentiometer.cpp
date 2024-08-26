@@ -1,6 +1,6 @@
 #include "Potentiometer.hpp"
 
-namespace InputsElt {
+namespace Inputs {
     Potentiometer::Potentiometer(uint8_t pin, int pot_min, int pot_max, int min_val, int max_val) {
         this->_pin = pin;
         this->_pot_min = pot_min;

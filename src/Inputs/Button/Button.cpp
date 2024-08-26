@@ -1,6 +1,6 @@
 #include "Button.hpp"
 
-namespace InputsElt {
+namespace Inputs {
     Button::Button(uint8_t pin) {
         this->_pin = pin;
         this->_button_state = NONE;
