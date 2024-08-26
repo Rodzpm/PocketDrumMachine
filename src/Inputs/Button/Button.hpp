@@ -14,6 +14,7 @@ namespace InputsElt {
         public:
             Button(uint8_t pin);
             int get();
+            void update_state(int button_val);
         private:
             uint8_t _pin;
             ButtonState _button_state;

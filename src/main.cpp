@@ -1,28 +1,43 @@
 #include <Arduino.h>
-// #include "Components/Sequencer/Sequencer.hpp"
+#include "Components/Sequencer/Sequencer.hpp"
+#include "Inputs/Button/Button.hpp"
 // #include "Inputs/Potentiometer/Potentiometer.hpp"
-#include "Screen/SSD1306/SSD1306.hpp"
-#include "bitmap/bli7.hpp"
 
-// Components::Sequencer<uint16_t> sequencer(16, 180);
+Components::Sequencer<uint8_t> sequencer(8, 180);
 // InputsElt::Potentiometer potentiometer(0, 0, 1023, 60, 240);
-Screen::SSD1306 display(128, 64);
 
 void setup()
 {
 	Serial1.begin(115200);
-	// sequencer.getDisplay().setup();
-	// sequencer.getInputs().setup();
-	display.init();
+	sequencer.getDisplay().setup();
+	sequencer.getInputs().setup();
+	delay(2000);
 }
 
 void loop()
 {
-	display.fillScreen(BLACK);
-	display.drawBitmap(0, 0, bli7_text, WHITE, 128, 64);
-	display.render();
-	// int pot_val = potentiometer.get();
-	// sequencer.setBPM(pot_val);
-	// sequencer.update();
-	// sequencer.display();
+	sequencer.update();
+	LinkedList<InputsElt::Button *> inputs = sequencer.getInputs().getInputs();
+	// for (int i = 0; i < inputs.size(); i++)
+	// {
+	// 	int state = inputs.get(i)->get();
+	// 	if (state == InputsElt::PRESSED)
+	// 	{
+	// 		Serial1.print("Button ");
+	// 		Serial1.print(i);
+	// 		Serial1.println(" pressed");
+	// 	}
+	// 	else if (state == InputsElt::HOLD)
+	// 	{
+	// 		Serial1.print("Button ");
+	// 		Serial1.print(i);
+	// 		Serial1.println(" hold");
+	// 	}
+	// 	else if (state == InputsElt::RELEASED)
+	// 	{
+	// 		Serial1.print("Button ");
+	// 		Serial1.print(i);
+	// 		Serial1.println(" released");
+	// 	}
+	// }
 }

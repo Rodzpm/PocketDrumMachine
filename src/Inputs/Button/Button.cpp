@@ -8,7 +8,10 @@ namespace InputsElt {
     }
 
     int Button::get() {
-        int button_val = digitalRead(this->_pin);
+        return this->_button_state;
+    }
+
+    void Button::update_state(int button_val) {
         if (button_val == HIGH) {
             if (this->_button_state == PRESSED || this->_button_state == HOLD) {
                 this->_button_state = HOLD;
@@ -22,6 +25,5 @@ namespace InputsElt {
                 this->_button_state = NONE;
             }
         }
-        return this->_button_state;
     }
 }

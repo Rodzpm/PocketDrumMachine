@@ -17,8 +17,8 @@ namespace Components {
             _display(Display<T>(size, 8, 9, 10)),
             _inputs(Inputs<T>(size, 2, 3, 4))
         {
-            // Ajoute 16 patterns à la séquence
-            for (int i = 0; i < 16; i++) {
+            // Ajoute les patterns à la séquence
+            for (int i = 0; i < size; i++) {
                 this->_sequence.add(new Pattern<T>(size, "Pattern"));
             }
         }
@@ -34,11 +34,7 @@ namespace Components {
             }
             this->_currentInputs = this->_inputs.getInputs();
 
-            for (int i = 0; i < this->_size; i++) {
-                if (this->_currentInputs & (1 << i)) {
-                    this->_sequence.get(this->_currentPattern)->setPatternAt(i, 1);
-                }
-            }
+            //things to do about inputs
         }
 
         void display()
@@ -72,7 +68,7 @@ namespace Components {
         int _currentStep = 0;
         Display<T> _display;
         Inputs<T> _inputs;
-        T _currentInputs = 0;
+        LinkedList<InputsElt::Button *> _currentInputs;
         Chrono _chrono;
     };
 }
