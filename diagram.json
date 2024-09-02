@@ -46,6 +46,14 @@
       "top": -16.06,
       "left": 278.63,
       "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 184.8,
+      "left": 549,
+      "rotate": 90,
+      "attrs": { "volume": "0.1" }
     }
   ],
   "connections": [
@@ -70,7 +78,9 @@
     [ "oled1:GND", "pico:GND.1", "black", [ "h144", "v192" ] ],
     [ "oled1:SDA", "pico:GP4", "orange", [ "h86.47", "v192" ] ],
     [ "oled1:SCL", "pico:GP5", "purple", [ "h86.7", "v192" ] ],
-    [ "pico:3V3", "oled1:VCC", "red", [ "v20.4", "h-172.8", "v-297.6", "h57.45" ] ]
+    [ "pico:3V3", "oled1:VCC", "red", [ "v20.4", "h-172.8", "v-297.6", "h57.45" ] ],
+    [ "bz1:2", "pico:GP15", "green", [ "h-35.7", "v-53.5", "h-211.2" ] ],
+    [ "bz1:1", "pico:GND.8", "black", [ "h-35.7", "v42.9", "h-48" ] ]
   ],
   "dependencies": {}
 }
